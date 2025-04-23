@@ -5,532 +5,307 @@ import org.junit.jupiter.api.*;
 
 public class PracticeProblemTest {
 
-    private Object createRectangle(double length, double width) {
+     @Test
+    public void testCowClassExists() {
         try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Constructor<?> constructor = rectangleClass.getConstructor(double.class, double.class);
-            return constructor.newInstance(length, width);
+            Class.forName("Cow");
+            assertTrue(true);
         } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("Rectangle constructor with (double, double) parameters does not exist");
-        } catch (Exception e) {
-            fail("Error creating Rectangle instance: " + e.getMessage());
-        }
-        return null; // This won't be reached due to fail() calls above
-    }
-
-    private Object createCircle(double radius) {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Constructor<?> constructor = rectangleClass.getConstructor(double.class);
-            return constructor.newInstance(radius);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("Rectangle constructor with (double, double) parameters does not exist");
-        } catch (Exception e) {
-            fail("Error creating Rectangle instance: " + e.getMessage());
-        }
-        return null; // This won't be reached due to fail() calls above
-    }
-
-    private Object createPerson(String name, int age, int height, int weight, String eyeColour, String hairColour) {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Constructor<?> constructor = rectangleClass.getConstructor(String.class, int.class, int.class, int.class, String.class, String.class);
-            return constructor.newInstance(name, age, height, weight, eyeColour, hairColour);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("Rectangle constructor with (double, double) parameters does not exist");
-        } catch (Exception e) {
-            fail("Error creating Rectangle instance: " + e.getMessage());
-        }
-        return null; // This won't be reached due to fail() calls above
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void getLengthTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("getLength");
-            Object rectangle = createRectangle(5, 4);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
+            fail("Cow class does not exist");
         }
     }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void getLengthTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("getLength");
-            Object rectangle = createRectangle(5, 0);
-            assertEquals(5.2, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void getWidthTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("getWidth");
-            Object rectangle = createRectangle(5, 4);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void getWidthTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("getWidth");
-            Object rectangle = createRectangle(5, 0);
-            assertEquals(5.2, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void rectAreaTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("area");
-            Object rectangle = createRectangle(5, 4);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void rectAreaTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("area");
-            Object rectangle = createRectangle(5, 0);
-            assertEquals(5.2, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void rectPerimeterTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("perimeter");
-            Object rectangle = createRectangle(5, 4);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void rectPerimeterTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Rectangle");
-            Method method = rectangleClass.getDeclaredMethod("perimeter");
-            Object rectangle = createRectangle(5, 0);
-            assertEquals(5.2, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circRadiusTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("getRadius");
-            Object rectangle = createCircle(5);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circRadiusTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("getRadius");
-            Object rectangle = createCircle(5);
-            assertEquals(8.5, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circGetRadiusTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("getRadius");
-            Object rectangle = createCircle(5);
-            assertEquals(5.0, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circGetRadiusTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("getRadius");
-            Object rectangle = createCircle(5);
-            assertEquals(8.5, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circAreaTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("area");
-            Object rectangle = createCircle(5);
-            assertEquals(78.5, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circAreaTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("area");
-            Object rectangle = createCircle(5);
-            assertEquals(226.865, (double)method.invoke(rectangle), 0.001);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circCircumferenceTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("circumference");
-            Object rectangle = createCircle(5);
-            assertEquals(31.4, (double)method.invoke(rectangle), 0.01);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void circCircumferenceTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Circle");
-            Method method = rectangleClass.getDeclaredMethod("circumference");
-            Object rectangle = createCircle(5);
-            assertEquals(53.38, (double)method.invoke(rectangle), 0.001);
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personNameTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getName");
-            Object rectangle = createPerson("Mr. Kalisz", 5, 180, 145, "Blue", "Brown");
-            assertEquals("Mr. Kalisz", (String)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personNameTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getName");
-            Object rectangle = createPerson("Chris", 14, 125, 100, "Grey", "Black");;
-            assertEquals("Chris", (String)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personAgeTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getAge");
-            Object rectangle = createPerson("Mr. Kalisz", 5, 180, 145, "Blue", "Brown");
-            assertEquals(5, (int)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personAgeTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getAge");
-            Object rectangle = createPerson("Chris", 14, 125, 100, "Grey", "Black");;
-            assertEquals(14, (int)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personHeightTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getHeight");
-            Object rectangle = createPerson("Mr. Kalisz", 5, 180, 145, "Blue", "Brown");
-            assertEquals(180, (int)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personHeightTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getHeight");
-            Object rectangle = createPerson("Chris", 14, 125, 100, "Grey", "Black");;
-            assertEquals(125, (int)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personWeightTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getWeight");
-            Object rectangle = createPerson("Mr. Kalisz", 5, 180, 145, "Blue", "Brown");
-            assertEquals(145, (int)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personWeightTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getWeight");
-            Object rectangle = createPerson("Chris", 14, 125, 100, "Grey", "Black");;
-            assertEquals(100, (int)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personEyeColourTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getEyeColour");
-            Object rectangle = createPerson("Mr. Kalisz", 5, 180, 145, "Blue", "Brown");
-            assertEquals("Blue", (String)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personEyeColourTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getEyeColour");
-            Object rectangle = createPerson("Chris", 14, 125, 100, "Grey", "Black");;
-            assertEquals("Grey", (String)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personHairColourTest1() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getHairColour");
-            Object rectangle = createPerson("Mr. Kalisz", 5, 180, 145, "Blue", "Brown");
-            assertEquals("Brown", (String)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-    @Test
-    @DisplayName("Test getLength method")
-    void personHairColourTest2() {
-        try {
-            Class<?> rectangleClass = Class.forName("Person");
-            Method method = rectangleClass.getDeclaredMethod("getHairColour");
-            Object rectangle = createPerson("Chris", 14, 125, 100, "Grey", "Black");;
-            assertEquals("Black", (String)method.invoke(rectangle));
-        } catch (ClassNotFoundException e) {
-            fail("Rectangle class does not exist");
-        } catch (NoSuchMethodException e) {
-            fail("getLength method does not exist");
-        } catch (Exception e) {
-            fail("Something weird happened: " + e.getMessage());
-        }
-    }
-
-
-
     
-
+    @Test
+    public void testCowConstructor() {
+        try {
+            Class<?> cowClass = Class.forName("Cow");
+            Constructor<?> constructor = cowClass.getConstructor(String.class, int.class, double.class);
+            assertNotNull(constructor, "Constructor with (String, int, double) parameters should exist");
+        } catch (ClassNotFoundException e) {
+            fail("Cow class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("Cow constructor with (String, int, double) parameters does not exist");
+        }
+    }
     
+    @Test
+    public void testGetNameMethod() {
+        try {
+            Class<?> cowClass = Class.forName("Cow");
+            Method getNameMethod = cowClass.getMethod("getName");
+            assertEquals(String.class, getNameMethod.getReturnType(), 
+                    "getName() should return String");
+        } catch (ClassNotFoundException e) {
+            fail("Cow class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("getName() method does not exist in Cow class");
+        }
+    }
+    
+    @Test
+    public void testGetAgeMethod() {
+        try {
+            Class<?> cowClass = Class.forName("Cow");
+            Method getAgeMethod = cowClass.getMethod("getAge");
+            assertEquals(int.class, getAgeMethod.getReturnType(), 
+                    "getAge() should return int");
+        } catch (ClassNotFoundException e) {
+            fail("Cow class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("getAge() method does not exist in Cow class");
+        }
+    }
+    
+    @Test
+    public void testGetWeightMethod() {
+        try {
+            Class<?> cowClass = Class.forName("Cow");
+            Method getWeightMethod = cowClass.getMethod("getWeight");
+            assertEquals(double.class, getWeightMethod.getReturnType(), 
+                    "getWeight() should return double");
+        } catch (ClassNotFoundException e) {
+            fail("Cow class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("getWeight() method does not exist in Cow class");
+        }
+    }
+    
+    @Test
+    public void testToStringMethod() {
+        try {
+            Class<?> cowClass = Class.forName("Cow");
+            Method toStringMethod = cowClass.getMethod("toString");
+            assertEquals(String.class, toStringMethod.getReturnType(), 
+                    "toString() should return String");
+            
+            // Create a cow instance if the class exists
+            Constructor<?> constructor = cowClass.getConstructor(String.class, int.class, double.class);
+            Object cow = constructor.newInstance("Daisy", 3, 950.75);
+            
+            String result = (String) toStringMethod.invoke(cow);
+            assertEquals("Daisy, 3 - 950.75", result, 
+                    "toString() should return name, age, and weight in the specified format");
+        } catch (ClassNotFoundException e) {
+            fail("Cow class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("toString() method does not exist or constructor is not properly defined in Cow class");
+        } catch (Exception e) {
+            fail("Error testing toString(): " + e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEqualsMethod() {
+        try {
+            Class<?> cowClass = Class.forName("Cow");
+            Method equalsMethod = cowClass.getMethod("equals", Object.class);
+            assertEquals(boolean.class, equalsMethod.getReturnType(), 
+                    "equals() should return boolean");
+            
+            // Create cow instances if the class exists
+            Constructor<?> constructor = cowClass.getConstructor(String.class, int.class, double.class);
+            Object cow1 = constructor.newInstance("Molly", 4, 1100.0);
+            Object cow2 = constructor.newInstance("Molly", 4, 1100.0);
+            Object cow3 = constructor.newInstance("Holly", 4, 1100.0);
+            Object cow4 = constructor.newInstance("Molly", 5, 1100.0);
+            Object cow5 = constructor.newInstance("Molly", 4, 1200.0);
+            
+            // Test equals method with all attributes the same
+            boolean result1 = (boolean) equalsMethod.invoke(cow1, cow2);
+            assertTrue(result1, "equals() should return true when all attributes match");
+            
+            // Test equals method with different name
+            boolean result2 = (boolean) equalsMethod.invoke(cow1, cow3);
+            assertFalse(result2, "equals() should return false when names don't match");
+            
+            // Test equals method with different age
+            boolean result3 = (boolean) equalsMethod.invoke(cow1, cow4);
+            assertFalse(result3, "equals() should return false when ages don't match");
+            
+            // Test equals method with different weight
+            boolean result4 = (boolean) equalsMethod.invoke(cow1, cow5);
+            assertFalse(result4, "equals() should return false when weights don't match");
+            
+            // Test equals with null and different class
+            boolean result5 = (boolean) equalsMethod.invoke(cow1, null);
+            assertFalse(result5, "equals() should return false when comparing with null");
+            
+            boolean result6 = (boolean) equalsMethod.invoke(cow1, "Not a cow");
+            assertFalse(result6, "equals() should return false when comparing with object of different class");
+        } catch (ClassNotFoundException e) {
+            fail("Cow class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("equals(Object) method does not exist in Cow class");
+        } catch (Exception e) {
+            fail("Error testing equals(): " + e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testCowFieldsExist() {
+        try {
+            Class<?> cowClass = Class.forName("Cow");
+            Field[] fields = cowClass.getDeclaredFields();
+            
+            boolean hasNameField = Arrays.stream(fields)
+                .anyMatch(field -> field.getName().toLowerCase().contains("name") && field.getType() == String.class);
+            boolean hasAgeField = Arrays.stream(fields)
+                .anyMatch(field -> field.getName().toLowerCase().contains("age") && field.getType() == int.class);
+            boolean hasWeightField = Arrays.stream(fields)
+                .anyMatch(field -> field.getName().toLowerCase().contains("weight") && field.getType() == double.class);
+            
+            assertTrue(hasNameField, "Cow class should have a name field of type String");
+            assertTrue(hasAgeField, "Cow class should have an age field of type int");
+            assertTrue(hasWeightField, "Cow class should have a weight field of type double");
+        } catch (ClassNotFoundException e) {
+            fail("Cow class does not exist");
+        }
+    }
 
-
+    @Test
+    public void testStudentClassExists() {
+        try {
+            Class.forName("Student");
+            assertTrue(true);
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        }
+    }
+    
+    @Test
+    public void testStudentConstructor() {
+        try {
+            Class<?> studentClass = Class.forName("Student");
+            Constructor<?> constructor = studentClass.getConstructor(String.class, int.class, String.class);
+            assertNotNull(constructor, "Constructor with (String, int, String) parameters should exist");
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("Student constructor with (String, int, String) parameters does not exist");
+        }
+    }
+    
+    @Test
+    public void testGetNameMethod() {
+        try {
+            Class<?> studentClass = Class.forName("Student");
+            Method getNameMethod = studentClass.getMethod("getName");
+            assertEquals(String.class, getNameMethod.getReturnType(), 
+                    "getName() should return String");
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("getName() method does not exist in Student class");
+        }
+    }
+    
+    @Test
+    public void testGetAgeMethod() {
+        try {
+            Class<?> studentClass = Class.forName("Student");
+            Method getAgeMethod = studentClass.getMethod("getAge");
+            assertEquals(int.class, getAgeMethod.getReturnType(), 
+                    "getAge() should return int");
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("getAge() method does not exist in Student class");
+        }
+    }
+    
+    @Test
+    public void testGetStudentNumberMethod() {
+        try {
+            Class<?> studentClass = Class.forName("Student");
+            Method getStudentNumberMethod = studentClass.getMethod("getStudentNumber");
+            assertEquals(String.class, getStudentNumberMethod.getReturnType(), 
+                    "getStudentNumber() should return String");
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("getStudentNumber() method does not exist in Student class");
+        }
+    }
+    
+    @Test
+    public void testToStringMethod() {
+        try {
+            Class<?> studentClass = Class.forName("Student");
+            Method toStringMethod = studentClass.getMethod("toString");
+            assertEquals(String.class, toStringMethod.getReturnType(), 
+                    "toString() should return String");
+            
+            // Create a student instance if the class exists
+            Constructor<?> constructor = studentClass.getConstructor(String.class, int.class, String.class);
+            Object student = constructor.newInstance("Jane Smith", 22, "S67890");
+            
+            String result = (String) toStringMethod.invoke(student);
+            assertEquals("Jane Smith, 22 - S67890", result, 
+                    "toString() should return name, age, and student number in the specified format");
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("toString() method does not exist or constructor is not properly defined in Student class");
+        } catch (Exception e) {
+            fail("Error testing toString(): " + e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testEqualsMethod() {
+        try {
+            Class<?> studentClass = Class.forName("Student");
+            Method equalsMethod = studentClass.getMethod("equals", Object.class);
+            assertEquals(boolean.class, equalsMethod.getReturnType(), 
+                    "equals() should return boolean");
+            
+            // Create student instances if the class exists
+            Constructor<?> constructor = studentClass.getConstructor(String.class, int.class, String.class);
+            Object student1 = constructor.newInstance("Alice", 19, "S11111");
+            Object student2 = constructor.newInstance("Bob", 21, "S11111");
+            Object student3 = constructor.newInstance("Alice", 19, "S22222");
+            
+            // Test equals method - should be equal because student numbers match
+            boolean result1 = (boolean) equalsMethod.invoke(student1, student2);
+            assertTrue(result1, "equals() should return true when student numbers match regardless of other attributes");
+            
+            // Test equals method - should not be equal because student numbers don't match
+            boolean result2 = (boolean) equalsMethod.invoke(student1, student3);
+            assertFalse(result2, "equals() should return false when student numbers don't match");
+            
+            // Test equals with null and different class
+            boolean result3 = (boolean) equalsMethod.invoke(student1, null);
+            assertFalse(result3, "equals() should return false when comparing with null");
+            
+            boolean result4 = (boolean) equalsMethod.invoke(student1, "Not a student");
+            assertFalse(result4, "equals() should return false when comparing with object of different class");
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        } catch (NoSuchMethodException e) {
+            fail("equals(Object) method does not exist in Student class");
+        } catch (Exception e) {
+            fail("Error testing equals(): " + e.getMessage());
+        }
+    }
+    
+    @Test
+    public void testStudentFieldsExist() {
+        try {
+            Class<?> studentClass = Class.forName("Student");
+            Field[] fields = studentClass.getDeclaredFields();
+            
+            boolean hasNameField = Arrays.stream(fields)
+                .anyMatch(field -> field.getName().toLowerCase().contains("name") && field.getType() == String.class);
+            boolean hasAgeField = Arrays.stream(fields)
+                .anyMatch(field -> field.getName().toLowerCase().contains("age") && field.getType() == int.class);
+            boolean hasStudentNumberField = Arrays.stream(fields)
+                .anyMatch(field -> field.getName().toLowerCase().contains("number") && field.getType() == String.class);
+            
+            assertTrue(hasNameField, "Student class should have a name field of type String");
+            assertTrue(hasAgeField, "Student class should have an age field of type int");
+            assertTrue(hasStudentNumberField, "Student class should have a studentNumber field of type String");
+        } catch (ClassNotFoundException e) {
+            fail("Student class does not exist");
+        }
+    }
 }
